@@ -1,0 +1,16 @@
+export { Simulator } from './core/engine.js';
+export { MinHeap, SimEvent } from './core/event.js';
+export { SeededRNG } from './core/random.js';
+export { Packet, PacketType, computeCRC32 } from './core/packet.js';
+export { SimulationConfig, ProtocolType } from './core/config.js';
+export { RTOEstimator } from './core/rto.js';
+export { Channel } from './channel/channel.js';
+export { MetricsCollector } from './metrics/collector.js';
+export { EventTracer } from './metrics/tracer.js';
+export { ProtocolStrategy } from './protocols/base.js';
+export { StopAndWaitProtocol } from './protocols/stop_and_wait.js';
+export { GoBackNProtocol } from './protocols/go_back_n.js';
+export { SelectiveRepeatProtocol } from './protocols/selective_repeat.js';
+export { runSimulation, compareProtocols } from './experiments/runner.js';
+export { sweepWindowSize, sweepLossRate } from './experiments/sweeps.js';
+export { renderBarChart, exportSvgSequenceDiagram } from './visualization/charts.js';
