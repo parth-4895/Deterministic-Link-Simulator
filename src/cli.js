@@ -29,6 +29,7 @@ program
   .option('--nak', 'Enable Negative ACKs (NAK) for Selective Repeat', false)
   .option('--adaptive-rto', 'Enable Jacobson/Karels dynamic RTO estimation', false)
   .option('--trace', 'Show step-by-step event trace log', false)
+  .option('-e, --events <count>', 'Limit number of trace events to display (default: all)', '0')
   .action(options => {
     const res = runSimulation({
       protocol: options.protocol,
@@ -49,7 +50,8 @@ program
 
     if (options.trace) {
       console.log(pc.yellow('\n--- Event Trace ---'));
-      console.log(res.tracer.formatConsoleTrace());
+      const eventLimit = parseInt(options.events, 10);
+      console.log(res.tracer.formatConsoleTrace(eventLimit > 0 ? eventLimit : null));
     }
 
     const table = new Table({

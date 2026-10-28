@@ -75,18 +75,7 @@ npm test
 # 1. Run a specific protocol with live event trace
 node src/cli.js run --protocol GO_BACK_N --frames 15 --loss 0.1 --trace
 
-# 2. Run with Phase 6 extensions (Fast Retransmit, NAK, Adaptive RTO)
-node src/cli.js run --protocol GO_BACK_N --frames 20 --loss 0.1 --fast-retransmit --trace
-node src/cli.js run --protocol SELECTIVE_REPEAT --frames 20 --loss 0.1 --nak --trace
 
-# 3. Compare all 3 protocols under identical channel conditions and seed
-node src/cli.js compare --frames 30 --loss 0.15
-
-# 4. Sweep window size showing theoretical knee near W = 1 + 2a and ASCII chart
-node src/cli.js sweep-window --max 8
-
-# 5. Sweep packet loss rates comparing retransmission overhead (GBN vs SR)
-node src/cli.js sweep-loss --frames 25
 
 # 6. Export swim-lane sequence diagrams (Mermaid or SVG)
 node src/cli.js diagram --protocol GO_BACK_N --format mermaid

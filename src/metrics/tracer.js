@@ -28,8 +28,9 @@ export class EventTracer {
   /**
    * Format text log for terminal display
    */
-  formatConsoleTrace(maxLines = 50) {
-    const lines = this.events.slice(-maxLines).map(e => {
+  formatConsoleTrace(maxLines = null) {
+    const slice = (maxLines && maxLines > 0) ? this.events.slice(-maxLines) : this.events;
+    const lines = slice.map(e => {
       const timeStr = e.time.toFixed(4).padStart(8, ' ');
       const typeStr = e.type.padEnd(12, ' ');
       const desc = e.packet ? `${e.packet.toString()} [${e.direction || ''}]` : (e.description || '');
